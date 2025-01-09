@@ -1,0 +1,24 @@
+{
+    "name": "frontend",
+    "version": "1.0.0",
+    "description": "Frontend for MasterIM project",
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build"
+    },
+    "dependencies": {
+        "@mdi/font": "^6.9.96",
+        "axios": "^1.5.0",
+        "frontend": "file:",
+        "vue": "^3.2.47",
+        "vue-router": "^4.2.2",
+        "vuetify": "^3.0.4"
+    },
+    "devDependencies": {
+        "@vue/cli-service": "^5.0.4",
+        "sass": "^1.62.1",
+        "sass-loader": "^13.3.2",
+        "webfontloader": "^1.0.0"
+    },
+    "proxy": "http://localhost:3000"
+}
