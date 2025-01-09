@@ -16,19 +16,40 @@
       size="64"
       class="my-8"
     ></v-progress-circular>
-    <v-row v-else>
-      <v-col cols="12" sm="6" md="4" v-for="news in newsItems" :key="news.id">
-        <v-card>
-          <v-img :src="news.image_url" height="200px"></v-img>
-          <v-card-title>{{ news.title }}</v-card-title>
-          <v-card-text>{{ truncateContent(news.content) }}</v-card-text>
-          <v-card-actions>
-            <v-btn text color="primary" @click="viewNews(news.id)">Lire la suite</v-btn>
-          </v-card-actions>
+    
+    <v-carousel
+      v-else
+      hide-delimiters
+      show-arrows="hover"
+      class="mt-4"
+    >
+      <v-carousel-item
+        v-for="news in newsItems"
+        :key="news.id"
+        :src="news.image_url"
+        cover
+      >
+        <v-sheet
+          color="rgba(0, 0, 0, 0.5)"
+          height="100%"
+          class="d-flex flex-column justify-end pa-4"
+        >
+          <v-card-title class="white--text">{{ news.title }}</v-card-title>
+          <v-card-text class="white--text">
+            {{ truncateContent(news.content) }}
+          </v-card-text>
+          <v-btn
+            color="primary"
+            @click="viewNews(news.id)"
+            class="mt-2"
+          >
+            Lire la suite
+          </v-btn>
           <Comments :newsId="news.id" />
-        </v-card>
-      </v-col>
-    </v-row>
+        </v-sheet>
+      </v-carousel-item>
+    </v-carousel>
+    
     <v-alert v-if="error" type="error" class="mt-4">
       {{ error }}
     </v-alert>
@@ -91,5 +112,14 @@ h1 {
 h2 {
   margin-top: 40px;
   margin-bottom: 20px;
+}
+.v-carousel-item {
+  position: relative;
+}
+.v-sheet {
+  background: rgba(0, 0, 0, 0.5);
+}
+.white--text {
+  color: white !important;
 }
 </style>
