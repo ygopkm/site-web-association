@@ -19,6 +19,5 @@
         "sass": "^1.62.1",
         "sass-loader": "^13.3.2",
         "webfontloader": "^1.0.0"
-    },
-    "proxy": "http://localhost:3000"
+    }
 }
