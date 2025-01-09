@@ -8,24 +8,23 @@ USE masterim_project;
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
+    password VARCHAR(127) NOT NULL,
     role ENUM('user', 'admin') NOT NULL DEFAULT 'user',
-    token VARCHAR(255) UNIQUE,
+    token VARCHAR(127) UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Insertion d'utilisateurs d'exemple
+-- Les mots de passe ont été générés avec bcrypt, niveau de salage 10
 INSERT INTO users (username, password, role, token) VALUES
-('admin', '$2b$10$abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef', 'admin', 'admin-token-123'),
-('user1', '$2b$10$abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef', 'user', 'user1-token-123'),
-('user2', '$2b$10$abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef', 'user', 'user2-token-123');
+('admin', '$2b$10$EV406.40z/EqsL.2xquzYuTfsb47kJFKzS8tNmlq0sc2NdfQ5QhRy', 'admin', 'admin-token-123'),
 
 -- Table des actualités
 CREATE TABLE news (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
+    title VARCHAR(127) NOT NULL,
     content TEXT NOT NULL,
-    image_url VARCHAR(255),
+    image_url VARCHAR(127),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -53,7 +52,7 @@ INSERT INTO comments (content, user_id, news_id) VALUES
 -- Table des propositions de vote
 CREATE TABLE proposals (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
+    title VARCHAR(127) NOT NULL,
     description TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
